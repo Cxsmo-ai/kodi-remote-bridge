@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary colors -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- App theme colors -->
+    <color name="primary">#FF6200EE</color>
+    <color name="primary_dark">#FF3700B3</color>
+    <color name="accent">#FF03DAC5</color>
+    
+    <!-- Background colors -->
+    <color name="background">#FF121212</color>
+    <color name="surface">#FF1E1E1E</color>
+    <color name="surface_variant">#FF2D2D2D</color>
+    
+    <!-- Connection status colors -->
+    <color name="connected">#FF4CAF50</color>
+    <color name="disconnected">#FFF44336</color>
+    <color name="connection_bar">#FF1E1E1E</color>
+    
+    <!-- Media info colors -->
+    <color name="media_info_background">#FF1E1E1E</color>
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#FFB0B0B0</color>
+    
+    <!-- D-pad colors -->
+    <color name="dpad_button">#FF2D2D2D</color>
+    <color name="dpad_button_pressed">#FF6200EE</color>
+    
+    <!-- Volume slider colors -->
+    <color name="volume_track_background">#FF2D2D2D</color>
+    <color name="volume_track_progress">#FF03DAC5</color>
+    <color name="volume_thumb">#FFFFFFFF</color>
+    
+    <!-- Button colors -->
+    <color name="navigation_button">#FF2D2D2D</color>
+    <color name="library_button">#FF2D2D2D</color>
+    <color name="power_button">#FFF44336</color>
+    <color name="add_button">#FF4CAF50</color>
+    <color name="edit_button">#FF2196F3</color>
+    <color name="delete_button">#FFF44336</color>
+    <color name="test_button">#FFFF9800</color>
+    
+    <!-- Button background -->
+    <color name="button_background">#FF2D2D2D</color>
+</resources>

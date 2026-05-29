@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.MainActivity">
+    
+    <!-- Connection Status Bar -->
+    <LinearLayout
+        android:id="@+id/connectionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/connection_bar"
+        app:layout_constraintTop_toTopOf="parent">
+        
+        <Button
+            android:id="@+id/buttonConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/disconnected"
+            android:backgroundTint="@color/disconnected" />
+        
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone" />
+        
+    </LinearLayout>
+    
+    <!-- Media Info -->
+    <LinearLayout
+        android:id="@+id/mediaInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/media_info_background"
+        app:layout_constraintTop_toBottomOf="@id/connectionBar">
+        
+        <TextView
+            android:id="@+id/textMediaTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_media_playing"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary" />
+        
+        <TextView
+            android:id="@+id/textMediaSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="4dp" />
+        
+        <!-- Progress Bar -->
+        <SeekBar
+            android:id="@+id/progressBarProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:max="100"
+            android:progress="0" />
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+            
+            <TextView
+                android:id="@+id/textCurrentTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00:00"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary" />
+            
+            <TextView
+                android:id="@+id/textTotalTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00:00"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"
+                android:gravity="end" />
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+    <!-- Remote Control D-Pad -->
+    <com.kodiremote.bridge.ui.RemoteControlView
+        android:id="@+id/remoteControlView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/mediaInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    
+    <!-- Playback Controls -->
+    <LinearLayout
+        android:id="@+id/playbackControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp"
+        android:enabled="false"
+        app:layout_constraintTop_toBottomOf="@id/remoteControlView">
+        
+        <ImageButton
+            android:id="@+id/buttonRewind"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_background"
+            android:src="@drawable/ic_rewind"
+            android:contentDescription="@string/rewind" />
+        
+        <ImageButton
+            android:id="@+id/buttonPlayPause"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_background"
+            android:src="@drawable/ic_play"
+            android:contentDescription="@string/play_pause" />
+        
+        <ImageButton
+            android:id="@+id/buttonStop"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_background"
+            android:src="@drawable/ic_stop"
+            android:contentDescription="@string/stop" />
+        
+        <ImageButton
+            android:id="@+id/buttonForward"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/button_background"
+            android:src="@drawable/ic_forward"
+            android:contentDescription="@string/forward" />
+        
+    </LinearLayout>
+    
+    <!-- Volume Control -->
+    <LinearLayout
+        android:id="@+id/volumeControl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/playbackControls">
+        
+        <ImageButton
+            android:id="@+id/buttonMute"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_background"
+            android:src="@drawable/ic_volume_on"
+            android:contentDescription="@string/mute" />
+        
+        <com.kodiremote.bridge.ui.VolumeSliderView
+            android:id="@+id/volumeSliderView"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1" />
+        
+    </LinearLayout>
+    
+    <!-- Navigation Buttons -->
+    <LinearLayout
+        android:id="@+id/navigationButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/volumeControl">
+        
+        <Button
+            android:id="@+id/buttonBack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@string/back"
+            android:backgroundTint="@color/navigation_button" />
+        
+        <Button
+            android:id="@+id/buttonHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@string/home"
+            android:backgroundTint="@color/navigation_button" />
+        
+        <Button
+            android:id="@+id/buttonInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@string/info"
+            android:backgroundTint="@color/navigation_button" />
+        
+        <Button
+            android:id="@+id/buttonContext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/menu"
+            android:backgroundTint="@color/navigation_button" />
+        
+    </LinearLayout>
+    
+    <!-- Library Buttons -->
+    <LinearLayout
+        android:id="@+id/libraryButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/navigationButtons">
+        
+        <Button
+            android:id="@+id/buttonMovies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@string/movies"
+            android:backgroundTint="@color/library_button"
+            android:drawableTop="@drawable/ic_movie" />
+        
+        <Button
+            android:id="@+id/buttonTvShows"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tv_shows"
+            android:backgroundTint="@color/library_button"
+            android:drawableTop="@drawable/ic_tv" />
+        
+    </LinearLayout>
+    
+    <!-- Power Button -->
+    <Button
+        android:id="@+id/buttonPower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/power"
+        android:backgroundTint="@color/power_button"
+        android:drawableStart="@drawable/ic_power"
+        app:layout_constraintTop_toBottomOf="@id/libraryButtons"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    
+</androidx.constraintlayout.widget.ConstraintLayout>
